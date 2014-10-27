@@ -1,0 +1,85 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ output extension=".cs" #>
+<#@ include file="TestTypeGeneratorSetup.ttinclude" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+
+namespace IoCBenchmark
+{
+<#
+	int createdTypesCount = 0;
+	int dependencyNumber = 0;
+
+	for (int level = 0; level < NumberOfLevels; level++)
+	{
+		var levelName = (char)('A' + level);
+		var levelTypeName = "TestType_" + levelName;
+
+		for (int i = 0; i < TypesPerLevel; i++)
+		{
+			var numberOfDigits = TypesPerLevel.ToString().Length;
+			var typeName = levelTypeName + "_" + i.ToString("D" + numberOfDigits.ToString());
+
+			// interface
+			this.PushIndent("\t");
+			this.Write("public interface I");
+			this.WriteLine(typeName);
+			this.WriteLine("{");
+			this.WriteLine("}\n");
+			this.PopIndent();
+
+			// class
+			this.PushIndent("\t");
+			this.Write("public class ");
+			this.Write(typeName);
+			this.Write(" : ");
+			this.Write("I" + typeName);
+			this.WriteLine("");
+			this.WriteLine("{");
+
+			//ctor
+			this.PushIndent("\t");
+			this.Write("public ");
+			this.Write(typeName);
+			this.Write("(");
+
+			// ctor dependencies
+			if (level > 0)
+			{
+				var numberOfDependencies = ((createdTypesCount % MaxAdditionalDependencies) + 1) + MinDependencies;
+				var previousLevelName = (char)('A' + level - 1);
+				for (int d = 0; d < numberOfDependencies; d++)
+				{
+					var dep = dependencyNumber % TypesPerLevel;
+
+					this.Write("ITestType_");
+					this.Write(previousLevelName.ToString());
+					this.Write("_");
+					this.Write(dep.ToString("D" + numberOfDigits.ToString()));
+					this.Write(" ");
+					this.Write("dep");
+					this.Write(d.ToString());
+					if (d < numberOfDependencies - 1)
+					{
+						this.Write(", ");
+					}
+
+					dependencyNumber = dependencyNumber + 3;
+				}
+			}
+
+			this.WriteLine(")");
+			this.WriteLine("{");
+			this.WriteLine("}");
+			this.PopIndent();
+
+			this.WriteLine("}\n");
+			this.PopIndent();
+
+			createdTypesCount++;
+		}
+	}
+	#>
+}

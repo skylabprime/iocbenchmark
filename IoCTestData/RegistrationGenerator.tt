@@ -1,0 +1,42 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ output extension=".cs" #>
+<#@ include file="TestTypeGeneratorSetup.ttinclude" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+
+namespace IoCBenchmark
+{
+	public static class ContainerRegistrations
+	{
+		public static void Register(IContainerAbstraction container)
+		{
+	<#
+			this.PushIndent("\t\t");
+
+			for (int level = 0; level < NumberOfLevels; level++)
+			{
+				var levelName = (char)('A' + level);
+				var levelTypeName = "TestType_" + levelName;
+				
+				for (int i = 0; i < TypesPerLevel; i++)
+				{
+					var numberOfDigits = TypesPerLevel.ToString().Length;
+					var typeName = levelTypeName + "_" + i.ToString("D" + numberOfDigits.ToString());
+					var isSingleton = i % SingletonStep == 0;
+
+					this.Write("container.Register<I");
+					this.Write(typeName);
+					this.Write(", ");
+					this.Write(typeName);
+					this.Write(">(");
+					this.Write(isSingleton.ToString().ToLower());
+					this.Write(");");
+					this.Write("\n");
+				}		
+			}
+	#>		
+		}
+	}
+}

@@ -1,0 +1,7 @@
+﻿<#+
+	const int NumberOfLevels = 8;
+	const int TypesPerLevel = 100;
+	const int MinDependencies = 0;
+	const int MaxAdditionalDependencies = 8;
+	const int SingletonStep = 5;
+#>

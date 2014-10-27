@@ -1,0 +1,43 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ output extension=".cs" #>
+<#@ include file="TestTypeGeneratorSetup.ttinclude" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+
+using System;
+using System.Diagnostics;
+namespace IoCBenchmark
+{
+	public static class Resolver
+	{
+		public static void ResolveAll(IContainerAbstraction container)
+		{
+	<#
+			this.PushIndent("\t\t");
+
+			for (int level = NumberOfLevels - 1; level >= 0; level--)
+			{
+				var levelName = (char)('A' + level);
+				var levelTypeName = "TestType_" + levelName;
+				
+				for (int i = 0; i < TypesPerLevel; i++)
+				{
+					var numberOfDigits = TypesPerLevel.ToString().Length;
+					var typeName = levelTypeName + "_" + i.ToString("D" + numberOfDigits.ToString());
+					
+					this.Write("if (");
+					this.Write("container.Resolve<I");
+					this.Write(typeName);
+					this.Write(">()");
+					this.Write(" == null) throw new Exception();\n");
+				}
+
+				
+				this.WriteLine("Debug.WriteLine(\"Resolved level\");");
+			}
+	#>		
+		}
+	}
+}
