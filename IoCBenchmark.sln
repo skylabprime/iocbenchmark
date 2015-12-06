@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IoCTestData", "IoCTestData\IoCTestData.csproj", "{5F184590-763D-4417-BA29-8B566312FD15}"
 EndProject
@@ -27,6 +27,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NinjectTest", "NinjectTest\NinjectTest.csproj", "{5FEAF1D7-CD41-449F-9C25-B4E0E196D14A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HiroTest", "HiroTest\HiroTest.csproj", "{DA16045F-96E8-4E4B-AC51-D165CE507036}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MefTest", "MefTest\MefTest.csproj", "{606A8F24-3C2E-48C3-BAEB-A47D6401308A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mef2Test", "Mef2Test\Mef2Test.csproj", "{839A8A1A-67D1-4023-B73C-DB4A9D3784B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -74,6 +78,14 @@ Global
 		{DA16045F-96E8-4E4B-AC51-D165CE507036}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA16045F-96E8-4E4B-AC51-D165CE507036}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA16045F-96E8-4E4B-AC51-D165CE507036}.Release|Any CPU.Build.0 = Release|Any CPU
+		{606A8F24-3C2E-48C3-BAEB-A47D6401308A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{606A8F24-3C2E-48C3-BAEB-A47D6401308A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{606A8F24-3C2E-48C3-BAEB-A47D6401308A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{606A8F24-3C2E-48C3-BAEB-A47D6401308A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{839A8A1A-67D1-4023-B73C-DB4A9D3784B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{839A8A1A-67D1-4023-B73C-DB4A9D3784B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{839A8A1A-67D1-4023-B73C-DB4A9D3784B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{839A8A1A-67D1-4023-B73C-DB4A9D3784B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,5 +99,7 @@ Global
 		{9E4707B8-DCBB-4F36-BD9F-7A0A676A72F7} = {5CF2D397-80BA-4DD3-BC27-8969E778081E}
 		{5FEAF1D7-CD41-449F-9C25-B4E0E196D14A} = {5CF2D397-80BA-4DD3-BC27-8969E778081E}
 		{DA16045F-96E8-4E4B-AC51-D165CE507036} = {5CF2D397-80BA-4DD3-BC27-8969E778081E}
+		{606A8F24-3C2E-48C3-BAEB-A47D6401308A} = {5CF2D397-80BA-4DD3-BC27-8969E778081E}
+		{839A8A1A-67D1-4023-B73C-DB4A9D3784B7} = {5CF2D397-80BA-4DD3-BC27-8969E778081E}
 	EndGlobalSection
 EndGlobal
