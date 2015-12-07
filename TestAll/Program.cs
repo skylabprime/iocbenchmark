@@ -18,6 +18,8 @@ namespace TestAll
           //     RunProcess("HiroTest", build);
             //    RunProcess("DynamoTest", build);
             RunProcess("SimpleInjectorTest", build);
+            RunProcess("MefTest", build);
+            RunProcess("Mef2Test", build);
 
             Console.Read();
         }
